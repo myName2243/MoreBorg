@@ -24,11 +24,16 @@ namespace Borg
         Texture2D torpedoT;
         Texture2D enemytorpedoT;
         Texture2D borgT;
+        Texture2D explosionT;
         Rectangle turret;
         Rectangle[] tubes = new Rectangle[4];
         Rectangle torpedo;
         Rectangle enemytorpedo;
         Rectangle borg;
+        Rectangle explosion;
+        Rectangle phaser;
+
+        Color[] colors = {Color.Blue, Color.Green, Color.Orange, Color.Red};
 
         Texture2D white;
         Rectangle chargemask;
@@ -41,23 +46,34 @@ namespace Borg
         int selected;
         int torpedoindex;
         int torpedodistance;
+        double factor;
         int borgindex;
+        int phasindex;
+        int phascolor;
         bool fired;
+        bool phasfired;
         bool enemyfired;
         bool canspawn;
         int power;
+        int phaspower;
         int energy;
         int propulsion;
         int timer = 0;
         int borgtimer = 0;
+        int phastimer = 0;
 
         String display = "";
         SpriteFont sf;
+
+        SoundEffect enemytorpedoS;
+        SoundEffect torpedoS;
+        SoundEffect phaserS;
 
         Random random;
 
         KeyboardState oldkb = Keyboard.GetState();
         MouseState oldmouse = Mouse.GetState();
+        GamePadState oldpad = GamePad.GetState(PlayerIndex.One);
 
         public Game1()
         {
@@ -82,6 +98,8 @@ namespace Borg
             for (int i = 0; i < tubes.Length; i++)
                 tubes[i] = new Rectangle((int)(350 + Math.Cos(i * Math.PI * 0.5) * 50), (int)(200 - Math.Sin(i * Math.PI * 0.5) * 50), 25 + ((i+1) % 2) * 25, 25 + (i % 2) * 25);
             borg = new Rectangle(-110, -110, 100, 100);
+            explosion = new Rectangle(-200, -200, 100, 100);
+            phaser = new Rectangle(-110, -110, 100, 100);
 
             chargemask = new Rectangle(10, 10, 120, 30);
             explosivemask = new Rectangle(10, 50, 119, 30);
@@ -99,12 +117,17 @@ namespace Borg
             selected = 1;
             torpedoindex = 1;
             torpedodistance = 100;
+            factor = 40;
             borgindex = 1;
+            phasindex = 1;
+            phascolor = 1;
             power = 1;
+            phaspower = 1;
             propulsion = 1;
             energy = 100;
 
             fired = false;
+            phasfired = false;
             enemyfired = false;
             canspawn = true;
 
@@ -129,11 +152,15 @@ namespace Borg
             torpedoT = this.Content.Load<Texture2D>("torpedo");
             enemytorpedoT = this.Content.Load<Texture2D>("enemytorpedo");
             borgT = this.Content.Load<Texture2D>("borg_cube");
+            explosionT = this.Content.Load<Texture2D>("download");
 
             white = this.Content.Load<Texture2D>("white");
 
             sf = this.Content.Load<SpriteFont>("SpriteFont1");
-            
+
+            enemytorpedoS = this.Content.Load<SoundEffect>("ETORP");
+            torpedoS = this.Content.Load<SoundEffect>("TORP");
+            phaserS = this.Content.Load<SoundEffect>("PHAS");
         }
 
         /// <summary>
@@ -154,9 +181,10 @@ namespace Borg
         {
             KeyboardState kb = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
+            GamePadState pad = GamePad.GetState(PlayerIndex.One);
             
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || kb.IsKeyDown(Keys.Escape))
+            if (pad.Buttons.Back == ButtonState.Pressed || kb.IsKeyDown(Keys.Escape))
                 this.Exit();
 
             /*
@@ -171,6 +199,9 @@ namespace Borg
              */ 
             if (fired)
             {
+                int eX = torpedo.X;
+                int eY = torpedo.Y;
+
                 switch (torpedoindex)
                 {
                     case 0:
@@ -210,6 +241,7 @@ namespace Borg
                 if (torpedo.X > tubes[0].X + torpedodistance || torpedo.X < tubes[2].X - torpedodistance || torpedo.Y > tubes[3].Y + torpedodistance || torpedo.Y < tubes[1].Y - torpedodistance)
                 {
                     fired = false;
+                    explosion = new Rectangle(eX, eY, torpedo.Width, torpedo.Height);
                     torpedo.X = -110;
                     torpedo.Y = -110;
                 }
@@ -259,6 +291,26 @@ namespace Borg
             }
 
             /*
+             * PHASER BEHAVIOR
+             */
+            if (phasfired)
+            {
+                phastimer++;
+
+                if (phasindex == borgindex)
+                {
+                    borg.X = -110;
+                    borg.Y = -110;
+                }
+
+                if (phastimer >= 60)
+                {
+                    phasfired = false;
+                    phaser = new Rectangle(-110, -110, 100, 100);
+                }
+            }
+
+            /*
              * BORG BEHAVIOR
              */
             if (borg.X <= -110 || borg.Y <= -110)
@@ -296,6 +348,7 @@ namespace Borg
                     canspawn = false;
                     enemytorpedo.X = borg.X;
                     enemytorpedo.Y = borg.Y;
+                    enemytorpedoS.Play();
                 }
 
                 borgtimer++;
@@ -319,7 +372,7 @@ namespace Borg
                 selected = 2;
             else if (kb.IsKeyDown(Keys.Down) && oldkb.IsKeyUp(Keys.Down))
                 selected = 3;*/
-            bool line1 = mouse.Y < GraphicsDevice.Viewport.Height * mouse.X / GraphicsDevice.Viewport.Width;
+            /*bool line1 = mouse.Y < GraphicsDevice.Viewport.Height * mouse.X / GraphicsDevice.Viewport.Width;
             bool line2 = mouse.Y < (-1 * GraphicsDevice.Viewport.Height * mouse.X / GraphicsDevice.Viewport.Width) + GraphicsDevice.Viewport.Height;
             if (line1 && !line2)
                 selected = 0;
@@ -328,10 +381,30 @@ namespace Borg
             else if (!line1 && line2)
                 selected = 2;
             else
+                selected = 3;*/
+            if (pad.DPad.Right == ButtonState.Pressed && oldpad.DPad.Right == ButtonState.Released)
+            {
+                selected = 0;
+                factor = (GraphicsDevice.Viewport.Width - tubes[0].X) / 9.0;
+            }
+            else if (pad.DPad.Up == ButtonState.Pressed && oldpad.DPad.Up == ButtonState.Released)
+            {
+                selected = 1;
+                factor = (tubes[1].Y) / 9.0;
+            }
+            else if (pad.DPad.Left == ButtonState.Pressed && oldpad.DPad.Left == ButtonState.Released)
+            {
+                selected = 2;
+                factor = (tubes[2].X) / 9.0;
+            }
+            else if (pad.DPad.Down == ButtonState.Pressed && oldpad.DPad.Down == ButtonState.Released)
+            {
                 selected = 3;
+                factor = (GraphicsDevice.Viewport.Height - tubes[3].Y) / 9.0;
+            }
 
             // is there a better way to do this, i don't know
-            if (kb.IsKeyDown(Keys.NumPad0) && oldkb.IsKeyUp(Keys.NumPad0))
+            /*if (kb.IsKeyDown(Keys.NumPad0) && oldkb.IsKeyUp(Keys.NumPad0))
                 power = 0;
             if (kb.IsKeyDown(Keys.NumPad1) && oldkb.IsKeyUp(Keys.NumPad1))
                 power = 1;
@@ -369,18 +442,57 @@ namespace Borg
             if (kb.IsKeyDown(Keys.D8) && oldkb.IsKeyUp(Keys.D8))
                 propulsion = 8;
             if (kb.IsKeyDown(Keys.D9) && oldkb.IsKeyUp(Keys.D9))
-                propulsion = 9;
+                propulsion = 9;*/
+            if (pad.ThumbSticks.Left.X >= 0)
+                power = (int)(pad.ThumbSticks.Left.X * 9);
+            if (pad.ThumbSticks.Left.Y >= 0)
+                propulsion = (int)(pad.ThumbSticks.Left.Y * 8) + 1;
+
+            if (pad.Buttons.X == ButtonState.Pressed && oldpad.Buttons.X == ButtonState.Released)
+                phaspower = 1;
+            if (pad.Buttons.A == ButtonState.Pressed && oldpad.Buttons.A == ButtonState.Released)
+                phaspower = 2;
+            if (pad.Buttons.Y == ButtonState.Pressed && oldpad.Buttons.Y == ButtonState.Released)
+                phaspower = 3;
+            if (pad.Buttons.B == ButtonState.Pressed && oldpad.Buttons.B == ButtonState.Released)
+                phaspower = 4;
 
             /*
              * FIRING BEHAVIOR
              */
-            if (mouse.LeftButton == ButtonState.Pressed && oldmouse.LeftButton == ButtonState.Released && !fired && energy >= power)
+            //if (mouse.LeftButton == ButtonState.Pressed && oldmouse.LeftButton == ButtonState.Released && !fired && energy >= power)
+            if (pad.Triggers.Left >= 0.5 && oldpad.Triggers.Left < 0.5 && !fired && energy >= power)
             {
                 fired = true;
                 torpedoindex = selected;
                 energy -= power + propulsion;
-                torpedodistance = propulsion * 40;
+                torpedodistance = (int)(propulsion * factor);
                 torpedo = new Rectangle(tubes[selected].X, tubes[selected].Y, 10 + (power*10), 10 + (power*10));
+                torpedoS.Play();
+            }
+            if (pad.Triggers.Right >= 0.5 && oldpad.Triggers.Right < 0.5 && !phasfired && energy >= phaspower*5)
+            {
+                phasfired = true;
+                phasindex = selected;
+                phascolor = phaspower;
+                switch (selected)
+                {
+                    case 0:
+                        phaser = new Rectangle(tubes[selected].X, tubes[selected].Y, GraphicsDevice.Viewport.Width - tubes[selected].X, 25);
+                        break;
+                    case 1:
+                        phaser = new Rectangle(tubes[selected].X, 0, 25, tubes[selected].Y);
+                        break;
+                    case 2:
+                        phaser = new Rectangle(0, tubes[selected].Y, tubes[selected].X, 25);
+                        break;
+                    case 3:
+                        phaser = new Rectangle(tubes[selected].X, tubes[selected].Y, 25, GraphicsDevice.Viewport.Height - tubes[selected].Y);
+                        break;
+                }
+                energy -= phaspower*5;
+                phastimer = 0;
+                phaserS.Play();
             }
 
             //display = "" + energy;    
@@ -388,6 +500,7 @@ namespace Borg
 
             oldkb = kb;
             oldmouse = mouse;
+            oldpad = pad;
 
             base.Update(gameTime);
         }
@@ -402,6 +515,7 @@ namespace Borg
 
             // TODO: Add your drawing code here
             sb.Begin();
+            sb.Draw(explosionT, explosion, Color.White);
             sb.Draw(turretT, turret, Color.White);
             for (int i = 0; i < tubes.Length; i++)
             {
@@ -413,6 +527,7 @@ namespace Borg
                     sb.Draw(tubesT[i], tubes[i], Color.White);
             }
             sb.Draw(borgT, borg, Color.White);
+            sb.Draw(white, phaser, colors[phascolor-1]);
             sb.Draw(torpedoT, torpedo, Color.White);
             sb.Draw(enemytorpedoT, enemytorpedo, Color.White);
             //sb.DrawString(sf, display, new Vector2(0, 0), Color.White);
