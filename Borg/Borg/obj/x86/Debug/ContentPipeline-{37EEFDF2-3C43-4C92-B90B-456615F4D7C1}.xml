@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\tube3.xnb</Output>
-      <Time>2017-10-04T09:25:02-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\tube3.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>tube2.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\tube2.xnb</Output>
-      <Time>2017-10-04T09:25:02-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\tube2.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>tube0.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\tube0.xnb</Output>
-      <Time>2017-10-04T09:25:02-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\tube0.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>tube1.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\tube1.xnb</Output>
-      <Time>2017-10-04T09:25:04-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\tube1.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>turret.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\turret.xnb</Output>
-      <Time>2017-10-04T09:25:04-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\turret.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>torpedo.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\torpedo.xnb</Output>
-      <Time>2017-10-04T09:28:22-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\torpedo.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>borg_cube.png</Source>
@@ -61,17 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\borg_cube.xnb</Output>
-      <Time>2017-10-06T15:40:30-05:00</Time>
-    </Item>
-    <Item>
-      <Source>SpriteFont1.spritefont</Source>
-      <Name>SpriteFont1</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
-      <Time>2017-10-06T15:36:38-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\borg_cube.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>enemytorpedo.png</Source>
@@ -79,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\enemytorpedo.xnb</Output>
-      <Time>2017-10-12T09:00:33.8615066-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\enemytorpedo.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
     </Item>
     <Item>
       <Source>white.png</Source>
@@ -88,8 +79,53 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\white.xnb</Output>
-      <Time>2017-10-12T09:47:35.5803905-05:00</Time>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\white.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont1.spritefont</Source>
+      <Name>SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
+      <Time>2017-10-12T18:26:50-05:00</Time>
+    </Item>
+    <Item>
+      <Source>download.jpg</Source>
+      <Name>download</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\download.xnb</Output>
+      <Time>2017-10-18T09:13:28.3920242-05:00</Time>
+    </Item>
+    <Item>
+      <Source>ETORP.wav</Source>
+      <Name>ETORP</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\ETORP.xnb</Output>
+      <Time>2017-10-18T09:50:37.7227471-05:00</Time>
+    </Item>
+    <Item>
+      <Source>TORP.wav</Source>
+      <Name>TORP</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\TORP.xnb</Output>
+      <Time>2017-10-18T09:50:37.7383473-05:00</Time>
+    </Item>
+    <Item>
+      <Source>PHAS.wav</Source>
+      <Name>PHAS</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\PHAS.xnb</Output>
+      <Time>2017-10-18T09:50:37.8319485-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -98,10 +134,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\BorgContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg\Borg\Borg\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\BorgContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\160306\Desktop\SPRINT 3\MoreBorg-max\MaxBorg\Borg\Borg\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
